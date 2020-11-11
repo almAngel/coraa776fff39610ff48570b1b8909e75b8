@@ -1,7 +1,8 @@
-import { DeleteResult, InsertResult, UpdateResult } from "typeorm";
+import { UserEntity } from "src/modules/user/user.entity";
+import { BaseEntity, DeleteResult, InsertResult, UpdateResult } from "typeorm";
 
 export async function handleResponse(
-    operationResult: Promise<InsertResult> | Promise<DeleteResult> | Promise<UpdateResult>
+    operationResult: Promise<any>
 ) {
     let error;
     let res;
@@ -19,7 +20,7 @@ export async function handleResponse(
                 code: 201
             };
         }
-        
+        return res;
     } else {
         return { 
             message: error.split(":").shift(),

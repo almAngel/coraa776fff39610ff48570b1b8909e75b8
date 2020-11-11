@@ -18,10 +18,7 @@ export class UserController {
   @ApiResponse({ status: 500, description: 'Internal server error' })
   add(@Body() user: User) {
 
-    return handleResponse(
-      this.userService.addUser(user)
-    );
-
+    return this.userService.save(user);
   }
 
 }

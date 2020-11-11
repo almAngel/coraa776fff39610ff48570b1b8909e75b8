@@ -4,7 +4,7 @@ import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger/dist/swagger-module';
 import { AppModule } from './modules/app/app.module';
 
-async function bootstrap() {
+const bootstrap = async function () {
   const app = await NestFactory.create(AppModule);
 
   const options = new DocumentBuilder()
@@ -18,6 +18,6 @@ async function bootstrap() {
     transform: false
   }));
   
-  await app.listen(3000);
-}
-bootstrap();
+  await app.listen(3000, "");
+}();
+

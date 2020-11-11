@@ -1,5 +1,5 @@
 import { ApiBody, ApiParam, ApiProperty } from "@nestjs/swagger";
-import { IsDefined, IsNotEmpty, IsOptional, isString, IsUUID, Length, Matches, MaxLength, Min, MinLength } from "class-validator";
+import { IsDefined, IsEmail, IsNotEmpty, IsOptional, isString, IsUUID, Length, Matches, MaxLength, Min, MinLength } from "class-validator";
 
 export abstract class User {
 
@@ -47,9 +47,18 @@ export abstract class User {
     abstract nif: string;
 
     @ApiProperty({
+        example: "example@example.com",
+        required: true
+    })
+    @IsNotEmpty()
+    @IsEmail()
+    @IsDefined()
+    abstract email: string;
+
+    @ApiProperty({
         example: "",
-        minLength: 8,
-        maxLength: 8,
+        minLength: 6,
+        maxLength: 16,
         required: true
     })
     @Matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/, { message: "Password must contain special characters 'ex: !@#$%^&*' and at least one number" })

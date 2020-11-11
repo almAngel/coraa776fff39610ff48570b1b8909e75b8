@@ -3,7 +3,6 @@ import { User } from "./user.dto";
 
 @Entity()
 export class UserEntity extends User {
-
     @PrimaryGeneratedColumn("uuid")
     uuid!: string;
 
@@ -21,6 +20,9 @@ export class UserEntity extends User {
 
     @Column()
     nif!: string;
+
+    @Column({ unique: true })
+    email: string;
 
     @Column()
     password: string;

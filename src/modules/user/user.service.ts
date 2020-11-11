@@ -2,7 +2,8 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UserEntity } from "./user.entity";
 import { Repository } from "typeorm";
-import { v4 as UUID } from "uuid";
+import { compare, hash as hashPass } from "bcrypt";
+import { handleResponse } from "../../utils/response.handler";
 
 @Injectable()
 export class UserService {
@@ -12,8 +13,37 @@ export class UserService {
         private readonly userRepository: Repository<UserEntity>
     ) { }
 
+    async save(user: any) {
 
-    async addUser(user: any) {
-        return await this.userRepository.insert(user);
+        return handleResponse(
+            this.insertAfterHash(user)
+        );
+    }
+
+    async load(id: any) {
+        return handleResponse(
+            this.userRepository.findOne(id)
+        );
+    }
+
+    async loadAll() {
+        return handleResponse(
+            this.userRepository.find()
+        );
+    }
+
+    private async hashPassword(password: string) {
+        if (password) {
+            return await hashPass(password, 10);
+        }
+    }
+
+    private async insertAfterHash(user: any) {
+        const hash = await this.hashPassword(user.password);
+        if (hash) {
+            user.password = hash;
+
+            return await this.userRepository.insert(user);
+        }
     }
 }
