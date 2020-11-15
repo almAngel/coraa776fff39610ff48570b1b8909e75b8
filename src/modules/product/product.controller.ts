@@ -3,33 +3,33 @@ import { ApiHeader, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { isUUID, IsUUID } from "class-validator";
 import { handleResponse } from "src/utils/response.handler";
 import { v4 } from "uuid";
-import { User } from "./user.dto";
-import { UserService } from "./user.service";
+import { Product } from "./product.dto";
+import { ProductService } from "./product.service";
 
-@ApiTags("user")
-@Controller("/user")
-export class UserController {
+@ApiTags("product")
+@Controller("/product")
+export class ProductController {
 
   constructor(
-    private readonly userService: UserService,
+    private readonly productService: ProductService,
   ) { }
 
   @Post("/")
-  @ApiResponse({ status: 201, description: `The ${UserController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
+  @ApiResponse({ status: 201, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
-  add(@Body() user: User) {
+  add(@Body() user: Product) {
 
-    return this.userService.save(user);
+    //return this.userService.save(user);
   }
 
   @Get("/:id")
-  @ApiResponse({ status: 200, description: `The ${UserController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
+  @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
   getOne(@Param("id") id: string) {
 
-    return this.userService.load(id);
+    //return this.userService.load(id);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
 import { User } from "./user.dto";
 
 @Entity()
@@ -7,7 +7,7 @@ export class UserEntity extends User {
     uuid!: string;
 
     @Column({ default: false })
-    verified: boolean;
+    verified!: boolean;
 
     @Column({ unique: true })
     username!: string;
@@ -22,9 +22,18 @@ export class UserEntity extends User {
     nif!: string;
 
     @Column({ unique: true })
-    email: string;
+    email!: string;
+
+    @Column({ default: false })
+    admin!: boolean;
 
     @Column()
-    password: string;
+    password!: string;
+
+    @Column()
+    access_token!: string;
+
+    @Column()
+    registered_on!: number;
 
 }

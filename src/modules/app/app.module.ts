@@ -1,3 +1,5 @@
+import { ProductModule } from './../product/product.module';
+import { ProductEntity } from './../product/product.entity';
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
@@ -16,10 +18,11 @@ import { UserModule } from '../user/user.module';
       username: 'root',
       password: '',
       database: '7565b8a118267731cbdf55763df9fb58',
-      entities: [UserEntity],
+      entities: [UserEntity, ProductEntity],
       synchronize: true,
     }),
-    UserModule
+    UserModule,
+    ProductModule
   ],
   controllers: [],
   providers: [AppService],

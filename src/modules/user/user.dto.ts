@@ -5,6 +5,9 @@ export abstract class User {
 
     abstract uuid: string;
     abstract verified: boolean;
+    abstract admin: boolean;
+    abstract access_token: string;
+    abstract registered_on: number;
 
     @ApiProperty({
         example: "exampleUser",

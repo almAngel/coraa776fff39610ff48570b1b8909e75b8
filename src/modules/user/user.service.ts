@@ -4,6 +4,8 @@ import { UserEntity } from "./user.entity";
 import { Repository } from "typeorm";
 import { compare, hash as hashPass } from "bcrypt";
 import { handleResponse } from "../../utils/response.handler";
+import { User } from "./user.dto";
+import { isUUID } from "class-validator";
 
 @Injectable()
 export class UserService {
@@ -20,10 +22,21 @@ export class UserService {
         );
     }
 
-    async load(id: any) {
-        return handleResponse(
-            this.userRepository.findOne(id)
-        );
+    async load(id: string) {
+        let res = await handleResponse(this.userRepository.findOne(id));
+        if (res instanceof User) {
+            delete res.password;
+            delete res.uuid;
+        }
+
+        if (isUUID(id)) {
+            return res;
+        } else {
+            return {
+                message: `Parameter 'id' must be a valid UUIDv4`,
+                code: 400
+            };
+        }
     }
 
     async loadAll() {

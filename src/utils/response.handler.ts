@@ -1,11 +1,10 @@
-import { UserEntity } from "src/modules/user/user.entity";
-import { BaseEntity, DeleteResult, InsertResult, UpdateResult } from "typeorm";
+import { BaseEntity, DeleteResult, Entity, InsertResult, UpdateResult } from "typeorm";
 
-export async function handleResponse(
-    operationResult: Promise<any>
+export async function handleResponse<T>(
+    operationResult: Promise<T>
 ) {
     let error;
-    let res;
+    let res: T;
 
     try {
         res = await operationResult;
@@ -14,17 +13,23 @@ export async function handleResponse(
     }
 
     if (res) {
+        
         if (res instanceof InsertResult) {
             return {
                 message: `Row inserted correctly`,
                 code: 201
             };
         }
-        return res;
-    } else {
-        return { 
-            message: error.split(":").shift(),
-            code: 500
+        else if (res instanceof Object) {
+            return res as T;
         }
+    } else {
+        if (error) {
+            return {
+                message: error.split(":").shift(),
+                code: 500
+            }
+        }
+        return error;
     }
 }
