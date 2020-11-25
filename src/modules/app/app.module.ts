@@ -34,7 +34,6 @@ import { UserModule } from '../user/user.module';
       password: '02a73297',
       database: 'heroku_4a851f6b83abc92',
       entities: [UserEntity, ProductEntity, TagEntity],
-      dropSchema: true,
       synchronize: true,
     }),
     UserModule,

@@ -30,13 +30,13 @@ export class ProductService {
 
     async load(id: string) {
         return await handleResponse(
-            this.productRepository.findOne(id)
+            this.productRepository.findOne(id, {relations: ["tags"]})
         );
     }
 
     async loadAll() {
         return await handleResponse(
-            this.productRepository.find()
+            this.productRepository.find({relations: ["tags"]})
         );
     }
 

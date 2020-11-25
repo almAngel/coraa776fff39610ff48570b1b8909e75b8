@@ -45,7 +45,7 @@ export class ProductEntity {
     @IsNotEmpty()
     @IsDefined()
     @ApiProperty({
-        example: [{ uuid: "", name: ""}],
+        example: [{ uuid: "", name: "" }],
         isArray: true
     })
     @ManyToMany(() => TagEntity, { cascade: true })
