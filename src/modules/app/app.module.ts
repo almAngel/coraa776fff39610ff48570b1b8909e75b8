@@ -1,3 +1,5 @@
+import { TagModule } from './../tag/tag.module';
+import { TagEntity } from './../tag/tag.entity';
 import { ProductModule } from './../product/product.module';
 import { ProductEntity } from './../product/product.entity';
 
@@ -18,11 +20,12 @@ import { UserModule } from '../user/user.module';
       username: 'root',
       password: '',
       database: '7565b8a118267731cbdf55763df9fb58',
-      entities: [UserEntity, ProductEntity],
+      entities: [UserEntity, ProductEntity, TagEntity],
       synchronize: true,
     }),
     UserModule,
-    ProductModule
+    ProductModule,
+    TagModule
   ],
   controllers: [],
   providers: [AppService],

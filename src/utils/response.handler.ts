@@ -16,9 +16,24 @@ export async function handleResponse<T>(
         
         if (res instanceof InsertResult) {
             return {
-                message: `Row inserted correctly`,
+                message: `Resource inserted correctly`,
                 code: 201
             };
+        }
+        if (res instanceof DeleteResult) {
+
+            if(res.affected == 0) {
+                return {
+                    message: `Resource not found`,
+                    code: 404
+                };
+            } else {
+                return {
+                    message: `Resource deleted correctly`,
+                    code: 200
+                };
+            }
+
         }
         else if (res instanceof Object) {
             return res as T;
