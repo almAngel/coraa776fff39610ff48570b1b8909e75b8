@@ -42,7 +42,13 @@ export class ProductEntity {
     @Column({ unique: true })
     slug: string;
 
-    @ManyToMany(() => TagEntity, { cascade: ["update"] })
+    @IsNotEmpty()
+    @IsDefined()
+    @ApiProperty({
+        example: [{ uuid: "", name: ""}],
+        isArray: true
+    })
+    @ManyToMany(() => TagEntity, { cascade: true })
     @JoinTable()
     tags: TagEntity[];
 
