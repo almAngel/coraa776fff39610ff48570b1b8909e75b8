@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger/dist/swagger-module';
+import { env } from 'process';
 import { AppModule } from './modules/app/app.module';
 
 const bootstrap = async function () {
@@ -18,6 +19,6 @@ const bootstrap = async function () {
     transform: false
   }));
   
-  await app.listen(3000, "");
+  await app.listen(process.env.PORT || 3000, "https://coraa776fff39610ff48570b1b890.herokuapp.com/");
 }();
 
