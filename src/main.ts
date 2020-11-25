@@ -15,10 +15,11 @@ const bootstrap = async function () {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe({
     transform: false
   }));
   
-  await app.listen(process.env.PORT || 3000, "https://coraa776fff39610ff48570b1b890.herokuapp.com/");
+  await app.listen(process.env.PORT || 3000);
 }();
 
