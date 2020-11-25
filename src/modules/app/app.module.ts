@@ -13,14 +13,28 @@ import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
+    /*
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'eu-cdbr-west-03.cleardb.net',
       port: 3306,
-      username: 'root',
-      password: '',
-      database: '7565b8a118267731cbdf55763df9fb58',
+      username: 'bd58e419ab06d3',
+      password: '02a73297',
+      database: 'heroku_4a851f6b83abc92',
       entities: [UserEntity, ProductEntity, TagEntity],
+      dropSchema: true,
+      synchronize: true,
+    }),
+    */
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'eu-cdbr-west-03.cleardb.net',
+      port: 3306,
+      username: 'bd58e419ab06d3',
+      password: '02a73297',
+      database: 'heroku_4a851f6b83abc92',
+      entities: [UserEntity, ProductEntity, TagEntity],
+      dropSchema: true,
       synchronize: true,
     }),
     UserModule,
