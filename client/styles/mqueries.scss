@@ -1,0 +1,177 @@
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 480
+   1280-1024   - desktop (default grid)
+   1024-768    - tablet landscape
+   768-480     - tablet 
+   480-less    - phone landscape & smaller
+--------------------------------------------*/
+@media all and (min-width: 1024px) /* and (max-width: 1280px) */ {
+    .container {
+        grid-template-columns: 1fr 4fr 1fr;
+    }
+
+    #svg {
+        width: 190px;
+        height: 190px;
+        margin: 0;
+        display: block;
+        cursor: default;
+    }
+
+    .title {
+        font-size: 40pt;
+    }
+
+    .subtitle {
+        font-size: 20pt;
+    }
+
+    .quote {
+        font-size: 10pt;
+    }
+
+    .body-subtitle {
+        width: 100%;
+    }
+
+    
+    .video {
+        width: 70%;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .footer-content {
+
+        div {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            align-self: center;
+            transform: scale(.8);
+
+        }
+    }
+
+    .video {
+        width: 80%;
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+
+    .footer-content {
+
+        div {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            align-self: center;
+            transform: scale(.7);
+
+        }
+    }
+
+    
+    .video {
+        width: 90%;
+    }
+    
+}
+
+@media all and (max-width: 480px) {
+    
+    .video {
+        width: 100%;
+    }
+
+    .shop-button {
+        transform: scale(.7);
+    }
+}
+
+/* Portrait */
+@media screen and (orientation: portrait) {
+    /* Portrait styles here */
+}
+/* Landscape */
+@media screen and (orientation: landscape) {
+    /* Landscape styles here */
+}
+
+/* CSS for iPhone, iPad, and Retina Displays */
+
+/* Non-Retina */
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+}
+
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5) {
+}
+
+/* iPhone Portrait */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+    .container {
+        grid-template-columns: 1fr 6fr 1fr;
+    }
+
+    #svg {
+        width: 170px;
+        height: 170px;
+        image-rendering: pixelated;
+        margin-top: 10%;
+    }
+
+    .title {
+        font-size: 20pt;
+    }
+
+    .subtitle {
+        font-size: 10pt;
+    }
+
+    .body-subtitle {
+        width: 100%;
+    }
+
+    .footer-content {
+
+        div {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            align-self: center;
+            transform: scale(.8);
+
+        }
+    }
+
+    
+    .video {
+        width: 100%;
+    }
+}
+
+/* iPhone Landscape */
+@media screen and (max-device-width: 480px) and (orientation: landscape) {
+}
+
+/* iPad Portrait */
+@media screen and (min-device-width: 481px) and (orientation: portrait) {
+
+    #svg {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* iPad Landscape */
+@media screen and (min-device-width: 481px) and (orientation: landscape) {
+    #svg {
+        width: 180px;
+        height: 180px;
+    }
+}

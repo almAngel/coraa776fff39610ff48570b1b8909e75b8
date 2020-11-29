@@ -2,7 +2,6 @@ import { TagEntity } from './tag.entity';
 import { Body, Controller, Param } from "@nestjs/common";
 import { Delete, Get, Post } from "@nestjs/common/decorators/http/request-mapping.decorator";
 import { ApiResponse, ApiTags } from "@nestjs/swagger";
-import { Tag } from "./tag.dto";
 import { TagService } from "./tag.service";
 
 @ApiTags("tag")

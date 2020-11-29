@@ -9,7 +9,6 @@ export class TagEntity {
 
     @PrimaryGeneratedColumn("uuid")
     uuid!: string;
-
     
     @ApiProperty({
         example: "Tropical",

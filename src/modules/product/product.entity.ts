@@ -28,7 +28,7 @@ export class ProductEntity {
         minLength: 1,
         required: true
     })
-    @Column()
+    @Column({ unique: true })
     name!: string;
 
     @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)

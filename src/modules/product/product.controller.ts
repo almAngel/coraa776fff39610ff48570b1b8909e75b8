@@ -1,15 +1,8 @@
 import { ProductTag } from './../product-tag/product-tag.dto';
-import { TagUUID } from './../tag/taguuid.dto';
-import { TagEntity } from './../tag/tag.entity';
-import { Body, Controller, Delete, Get, Optional, Param, Post, Put } from "@nestjs/common";
-import { ApiBody, ApiHeader, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { isUUID, IsUUID } from "class-validator";
-import { handleResponse } from "src/utils/response.handler";
-import { v4 } from "uuid";
-import { Product } from "./product.dto";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ProductEntity } from "./product.entity";
 import { ProductService } from "./product.service";
-import { Tag } from '../tag/tag.dto';
 
 @ApiTags("product")
 @Controller("/product")

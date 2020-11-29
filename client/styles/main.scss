@@ -1,0 +1,246 @@
+@import "shades.scss";
+@import "fonts.scss";
+@import "mqueries.scss";
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $shade_4;
+}
+
+.center {
+    margin: 0 auto;
+    position: relative;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.link-notlink {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+        "header header header"
+        "sidebar body sidebar2"
+        "sidebar body sidebar2"
+        "footer footer footer";
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    .header {
+        width: 100%;
+        height: 100px;
+        grid-area: header;
+        padding: 20px 0 10px 20px;
+        display: flex;
+        align-items: center;
+
+        .header-link {
+            background-color: $shade_3;
+            text-align: center;
+            border-radius: 20px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            position: relative;
+            display: inline-block;
+            margin-left: 20px;
+            line-height: 20px;
+            vertical-align: middle;
+
+            a {
+                color: $shade_0;
+
+                &:visited {
+                    color: $shade_1;
+                }
+            }
+        }
+
+        .logo-container {
+            background-color: $shade_3;
+            border-radius: 100px;
+            padding: 10px;
+            width: fit-content;
+            height: 80px;
+            display: inline-block;
+
+            a {
+                display: inline-block;
+                margin: 0;
+                width: fit-content;
+                height: 60px;
+                .logo {
+                    width: 60px;
+                    height: 60px;
+                    image-rendering: pixelated;
+                    image-rendering: -moz-crisp-edges;
+                }
+            }
+        }
+    }
+
+    .body {
+        grid-area: body;
+
+        .svg-logo-container {
+            width: fit-content;
+            height: 170px;
+            margin: auto;
+            padding: 1%;
+        }
+    }
+
+    .footer {
+        grid-area: footer;
+        height: 300px;
+        bottom: 0;
+        left: 0;
+        background-color: $shade_0;
+
+        .footer-content {
+            display: flex;
+            height: 100%;
+            flex-wrap: wrap;
+
+            .registered {
+                align-self: center;
+            }
+        }
+    }
+}
+
+.powered-by {
+}
+
+.trademark {
+}
+
+.contact {
+}
+
+.shop-button-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    .shop-button {
+        background-color: $primary;
+        color: white;
+        padding: 20px;
+        border: 0;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+}
+
+
+.align-center {
+    margin-left: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.align-right {
+    margin-left: auto;
+}
+
+.mb05 {
+    margin-bottom: 5%;
+}
+
+.mb1 {
+    margin-bottom: 10%;
+}
+
+.h-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt05 {
+    margin-top: 5%;
+}
+.mt1 {
+    margin-top: 10%;
+}
+.mt2 {
+    margin-top: 20%;
+}
+
+.mr1 {
+    margin-right: 10%;
+}
+
+.img-icon {
+    width: 50px;
+    filter: sepia(1) brightness(1.3);
+}
+
+.video-in {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.d-block {
+    display: block;
+}
+
+.p1 {
+    padding: 1%;
+}
+
+.p2 {
+    padding: 2%;
+}
+
+.p3 {
+    padding: 3%;
+}
+.p4 {
+    padding: 4%;
+}
+.p5 {
+    padding: 5%;
+}
+
+.ph1 {
+    padding: 0 1% 0 1%;
+}
+
+.m1 {
+    margin: 10%;
+}
+
+.m2 {
+    margin: 20%;
+}
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}

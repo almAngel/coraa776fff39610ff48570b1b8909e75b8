@@ -10,9 +10,15 @@ import { AppService } from './app.service';
 import { UserEntity } from '../user/user.entity';
 import { Connection } from 'typeorm';
 import { UserModule } from '../user/user.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', '..', '..', 'client'),
+      renderPath: "/"
+    }),
     /*
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -40,7 +46,7 @@ import { UserModule } from '../user/user.module';
     ProductModule,
     TagModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {

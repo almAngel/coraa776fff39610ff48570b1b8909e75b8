@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAOA,AAAA,UAAU,CAAC;EACP,KAAK,EARC,OAAO;CAShB;;AAED,AAAA,eAAe,CAAC;EACZ,KAAK,EAXC,OAAO;CAYhB;;AAED,AAAA,iBAAiB,CAAC;EACd,KAAK,EAdC,OAAO;CAehB;;AAED,AAAA,WAAW,CAAC;EACR,KAAK,EAjBC,OAAO;CAkBhB;;AAED,AAAA,gBAAgB,CAAC;EACb,KAAK,EApBC,OAAO;CAqBhB",
+    "sources": [
+        "shades.scss"
+    ],
+    "names": [],
+    "file": "shades.css"
+}

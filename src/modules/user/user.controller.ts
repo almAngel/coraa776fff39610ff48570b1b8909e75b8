@@ -1,8 +1,5 @@
-import { Body, Controller, Get, Optional, Param, Post } from "@nestjs/common";
-import { ApiHeader, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { isUUID, IsUUID } from "class-validator";
-import { handleResponse } from "src/utils/response.handler";
-import { v4 } from "uuid";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { ApiResponse, ApiTags } from "@nestjs/swagger";
 import { User } from "./user.dto";
 import { UserService } from "./user.service";
 

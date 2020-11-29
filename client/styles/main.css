@@ -1,0 +1,462 @@
+.text-dark {
+  color: #302F1A;
+}
+
+.text-lightdark {
+  color: #5C5A43;
+}
+
+.text-equilibrium {
+  color: #8C8971;
+}
+
+.text-light {
+  color: #BFBCA2;
+}
+
+.text-extralight {
+  color: #F4F1D6;
+}
+
+@font-face {
+  font-family: 'sansita';
+  src: url("../fonts/sansita/SansitaSwashed-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto';
+  src: url("../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.sansita-text {
+  font-family: "sansita", sans-serif;
+}
+
+.roboto-text {
+  font-family: "roboto", serif;
+}
+
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 480
+   1280-1024   - desktop (default grid)
+   1024-768    - tablet landscape
+   768-480     - tablet 
+   480-less    - phone landscape & smaller
+--------------------------------------------*/
+@media all and (min-width: 1024px) {
+  .container {
+    -ms-grid-columns: 1fr 4fr 1fr;
+        grid-template-columns: 1fr 4fr 1fr;
+  }
+  #svg {
+    width: 190px;
+    height: 190px;
+    margin: 0;
+    display: block;
+    cursor: default;
+  }
+  .title {
+    font-size: 40pt;
+  }
+  .subtitle {
+    font-size: 20pt;
+  }
+  .quote {
+    font-size: 10pt;
+  }
+  .body-subtitle {
+    width: 100%;
+  }
+  .video {
+    width: 70%;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .footer-content div {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  .video {
+    width: 80%;
+  }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .footer-content div {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  .video {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .video {
+    width: 100%;
+  }
+  .shop-button {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+}
+
+/* Portrait */
+@media screen and (orientation: portrait) {
+  /* Portrait styles here */
+}
+
+/* Landscape */
+@media screen and (orientation: landscape) {
+  /* Landscape styles here */
+}
+
+/* CSS for iPhone, iPad, and Retina Displays */
+/* Non-Retina */
+/* Retina */
+/* iPhone Portrait */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .container {
+    -ms-grid-columns: 1fr 6fr 1fr;
+        grid-template-columns: 1fr 6fr 1fr;
+  }
+  #svg {
+    width: 170px;
+    height: 170px;
+    -ms-interpolation-mode: nearest-neighbor;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-pixelated;
+        image-rendering: pixelated;
+    margin-top: 10%;
+  }
+  .title {
+    font-size: 20pt;
+  }
+  .subtitle {
+    font-size: 10pt;
+  }
+  .body-subtitle {
+    width: 100%;
+  }
+  .footer-content div {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  .video {
+    width: 100%;
+  }
+}
+
+/* iPhone Landscape */
+/* iPad Portrait */
+@media screen and (min-device-width: 481px) and (orientation: portrait) {
+  #svg {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* iPad Landscape */
+@media screen and (min-device-width: 481px) and (orientation: landscape) {
+  #svg {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #F4F1D6;
+}
+
+.center {
+  margin: 0 auto;
+  position: relative;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.link-notlink {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (auto)[4];
+      grid-template-rows: repeat(4, auto);
+      grid-template-areas: "header header header" "sidebar body sidebar2" "sidebar body sidebar2" "footer footer footer";
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.container .header {
+  width: 100%;
+  height: 100px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: header;
+  padding: 20px 0 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .header .header-link {
+  background-color: #BFBCA2;
+  text-align: center;
+  border-radius: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.container .header .header-link a {
+  color: #302F1A;
+}
+
+.container .header .header-link a:visited {
+  color: #5C5A43;
+}
+
+.container .header .logo-container {
+  background-color: #BFBCA2;
+  border-radius: 100px;
+  padding: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 80px;
+  display: inline-block;
+}
+
+.container .header .logo-container a {
+  display: inline-block;
+  margin: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 60px;
+}
+
+.container .header .logo-container a .logo {
+  width: 60px;
+  height: 60px;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -o-pixelated;
+      image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+}
+
+.container .body {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  grid-area: body;
+}
+
+.container .body .svg-logo-container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 170px;
+  margin: auto;
+  padding: 1%;
+}
+
+.container .footer {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: footer;
+  height: 300px;
+  bottom: 0;
+  left: 0;
+  background-color: #302F1A;
+}
+
+.container .footer .footer-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.container .footer .footer-content .registered {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.shop-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.shop-button-container .shop-button {
+  background-color: #ff4340;
+  color: white;
+  padding: 20px;
+  border: 0;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.align-center {
+  margin-left: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.align-right {
+  margin-left: auto;
+}
+
+.mb05 {
+  margin-bottom: 5%;
+}
+
+.mb1 {
+  margin-bottom: 10%;
+}
+
+.h-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt05 {
+  margin-top: 5%;
+}
+
+.mt1 {
+  margin-top: 10%;
+}
+
+.mt2 {
+  margin-top: 20%;
+}
+
+.mr1 {
+  margin-right: 10%;
+}
+
+.img-icon {
+  width: 50px;
+  -webkit-filter: sepia(1) brightness(1.3);
+          filter: sepia(1) brightness(1.3);
+}
+
+.video-in {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.d-block {
+  display: block;
+}
+
+.p1 {
+  padding: 1%;
+}
+
+.p2 {
+  padding: 2%;
+}
+
+.p3 {
+  padding: 3%;
+}
+
+.p4 {
+  padding: 4%;
+}
+
+.p5 {
+  padding: 5%;
+}
+
+.ph1 {
+  padding: 0 1% 0 1%;
+}
+
+.m1 {
+  margin: 10%;
+}
+
+.m2 {
+  margin: 20%;
+}
+
+.unselectable {
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+}
+/*# sourceMappingURL=main.css.map */
