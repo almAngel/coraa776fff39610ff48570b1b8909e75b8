@@ -1,9 +1,11 @@
 import { TagEntity } from './tag.entity';
-import { Body, Controller, Param } from "@nestjs/common";
+import { Body, Controller, Param, UseGuards } from "@nestjs/common";
 import { Delete, Get, Post } from "@nestjs/common/decorators/http/request-mapping.decorator";
-import { ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiBasicAuth, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { TagService } from "./tag.service";
+import { BasicGuard } from '../auth/basic.guard';
 
+@ApiBasicAuth()
 @ApiTags("tag")
 @Controller("/tag")
 export class TagController {
@@ -13,6 +15,7 @@ export class TagController {
     ) { }
 
     @Get("/")
+    @UseGuards(BasicGuard)
     @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
     @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
     @ApiResponse({ status: 500, description: 'Internal server error' })
@@ -22,6 +25,7 @@ export class TagController {
     }
 
     @Get("/:id")
+    @UseGuards(BasicGuard)
     @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
     @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
     @ApiResponse({ status: 500, description: 'Internal server error' })
@@ -31,6 +35,7 @@ export class TagController {
     }
 
     @Post("/")
+    @UseGuards(BasicGuard)
     @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
     @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
     @ApiResponse({ status: 500, description: 'Internal server error' })
@@ -40,6 +45,7 @@ export class TagController {
     }
 
     @Delete("/:id")
+    @UseGuards(BasicGuard)
     @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
     @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
     @ApiResponse({ status: 500, description: 'Internal server error' })

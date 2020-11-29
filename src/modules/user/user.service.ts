@@ -23,7 +23,10 @@ export class UserService {
     }
 
     async load(id: string) {
-        let res = await handleResponse(this.userRepository.findOne(id));
+        let res = await handleResponse(
+            this.userRepository.findOne(id)
+        );
+
         if (res instanceof User) {
             delete res.password;
             delete res.uuid;
@@ -39,13 +42,54 @@ export class UserService {
         }
     }
 
+    async findByUsername(username: string) {
+        return await handleResponse(
+            this.userRepository.findOne({ username: username })
+        );
+    }
+
+    async findByUsernameAndPassword(username: string, password: string) {
+
+        const res = await handleResponse(
+            this.userRepository.findOne({ username: username })
+        );
+
+        console.log(res);
+        
+
+        if (res !== undefined) {
+            if (res.username && res.password) {
+                const isEqual = await compare(password, res.password);
+                if (res.username == username) {
+                    if (isEqual) {
+                        return await this.userRepository.findOne({ username: username, password: res.password });
+                    }
+                }
+
+            }
+        }
+        else {
+            return {
+                code: 404,
+                message: "Resource not found"
+            }
+        }
+
+    }
+
+    async findByEmail(email: string) {
+        return await handleResponse(
+            this.userRepository.findOne({ email: email })
+        );
+    }
+
     async loadAll() {
         return handleResponse(
             this.userRepository.find()
         );
     }
 
-    private async hashPassword(password: string) {
+    public async hashPassword(password: string) {
         if (password) {
             return await hashPass(password, 10);
         }

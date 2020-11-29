@@ -1,9 +1,12 @@
+import { BasicGuard } from './../auth/basic.guard';
 import { ProductTag } from './../product-tag/product-tag.dto';
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { ApiResponse, ApiTags } from "@nestjs/swagger";
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from "@nestjs/common";
+import { ApiBasicAuth, ApiBearerAuth, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ProductEntity } from "./product.entity";
 import { ProductService } from "./product.service";
+import { AuthGuard } from '@nestjs/passport';
 
+@ApiBasicAuth()
 @ApiTags("product")
 @Controller("/product")
 export class ProductController {
@@ -13,6 +16,7 @@ export class ProductController {
   ) { }
 
   @Get("/")
+  @UseGuards(BasicGuard)
   @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
@@ -22,6 +26,7 @@ export class ProductController {
   }
 
   @Get("/:id")
+  @UseGuards(BasicGuard)
   @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
@@ -31,6 +36,7 @@ export class ProductController {
   }
 
   @Post("/")
+  @UseGuards(BasicGuard)
   @ApiResponse({ status: 201, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
@@ -40,6 +46,7 @@ export class ProductController {
   }
 
   @Put("/:id/tags")
+  @UseGuards(BasicGuard)
   @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully updated` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
@@ -49,6 +56,7 @@ export class ProductController {
   }
 
   @Put("/:id")
+  @UseGuards(BasicGuard)
   @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully updated` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
@@ -60,6 +68,7 @@ export class ProductController {
   }
 
   @Delete("/:id")
+  @UseGuards(BasicGuard)
   @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully deleted` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })

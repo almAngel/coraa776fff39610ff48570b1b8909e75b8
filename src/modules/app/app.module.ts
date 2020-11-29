@@ -1,3 +1,4 @@
+import { AuthModule } from './../auth/auth.module';
 import { TagModule } from './../tag/tag.module';
 import { TagEntity } from './../tag/tag.entity';
 import { ProductModule } from './../product/product.module';
@@ -44,7 +45,8 @@ import { join } from 'path';
     }),
     UserModule,
     ProductModule,
-    TagModule
+    TagModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

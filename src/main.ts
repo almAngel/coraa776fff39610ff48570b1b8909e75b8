@@ -12,6 +12,7 @@ const bootstrap = async function () {
     .setTitle('Fancy Fruit API')
     .setDescription('Tropical fancy fruit official public API')
     .setVersion('1.0')
+    .addBasicAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
