@@ -1,3 +1,4 @@
+import { handleResponse } from 'src/utils/response.handler';
 import { UserService } from './../user/user.service';
 import { Repository } from 'typeorm';
 import { Injectable } from "@nestjs/common";
@@ -18,5 +19,11 @@ export class AuthService {
         } 
         
         return false;
+    }
+
+    async validatePassword(pass: string, hash: string) {
+        let res = await compare(pass, hash);
+
+        return res;
     }
 }

@@ -1,5 +1,6 @@
+import { Pass } from './pass.dto';
 import { Body, Controller, Get, Optional, Param, Post } from "@nestjs/common";
-import { ApiHeader, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiHeader, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { isUUID, IsUUID } from "class-validator";
 import { handleResponse } from "src/utils/response.handler";
 import { v4 } from "uuid";
@@ -14,13 +15,13 @@ export class AuthController {
     private readonly authService: AuthService,
   ) { }
 
-  @Get("/")
+  @Post("/password")
   @ApiResponse({ status: 200, description: `The ${AuthController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
-  getOne(@Param("id") id: string) {
+  validatePass(@Body() comparison: Pass) {
 
-    //return this.authService.getAuthorization(id);
+    return this.authService.validatePassword(comparison.password, comparison.hash);
   }
 
 }
