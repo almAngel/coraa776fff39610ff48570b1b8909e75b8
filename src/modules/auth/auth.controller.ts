@@ -16,7 +16,7 @@ export class AuthController {
   ) { }
 
   @Post("/password")
-  @ApiResponse({ status: 200, description: `The ${AuthController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
+  @ApiResponse({ status: 201, description: `The ${AuthController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
   validatePass(@Body() comparison: Pass) {

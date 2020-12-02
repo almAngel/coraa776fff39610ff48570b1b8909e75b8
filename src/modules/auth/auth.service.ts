@@ -24,6 +24,9 @@ export class AuthService {
     async validatePassword(pass: string, hash: string) {
         let res = await compare(pass, hash);
 
-        return res;
+        return {
+            message: res,
+            code: 201
+        };
     }
 }
