@@ -50,7 +50,6 @@ export class ProductEntity {
     })
     @ManyToMany(
         type => TagEntity, 
-        tag => tag.uuid,
         { cascade: true },
     )
     @JoinTable()
