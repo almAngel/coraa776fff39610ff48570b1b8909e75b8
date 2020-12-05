@@ -24,7 +24,7 @@ export class ProductService {
     async save(product: any) {
 
         let response = await handleResponse(
-            this.productRepository.insert(product)
+            this.productRepository.save(product)
         );
 
         return response;
