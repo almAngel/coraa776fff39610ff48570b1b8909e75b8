@@ -1,3 +1,4 @@
+import { TagEntity } from './../tag/tag.entity';
 import { BasicGuard } from './../auth/basic.guard';
 import { ProductTag } from './../product-tag/product-tag.dto';
 import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from "@nestjs/common";
@@ -5,6 +6,7 @@ import { ApiBasicAuth, ApiBearerAuth, ApiResponse, ApiTags } from "@nestjs/swagg
 import { ProductEntity } from "./product.entity";
 import { ProductService } from "./product.service";
 import { AuthGuard } from '@nestjs/passport';
+import { Tag } from '../tag/tag.dto';
 
 @ApiBasicAuth()
 @ApiTags("product")
@@ -23,6 +25,16 @@ export class ProductController {
   getAll() {
 
     return this.productService.loadAll();
+  }
+
+  @Post("/tag")
+  @UseGuards(BasicGuard)
+  @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
+  @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  getByTags(@Body() tags: TagEntity[]) {
+
+    return this.productService.loadByTags(tags);
   }
 
   @Get("/:id")
@@ -50,9 +62,9 @@ export class ProductController {
   @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully updated` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
-  addTags(@Param("id") id: string, @Body() productTag: ProductTag) {
+  addTags(@Param("id") id: string, @Body() tags: TagEntity[]) {
 
-    return this.productService.addTags(id, productTag.tags);
+    return this.productService.addTags(id, tags);
   }
 
   @Put("/:id")

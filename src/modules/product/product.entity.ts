@@ -48,7 +48,11 @@ export class ProductEntity {
         example: [{ uuid: "", name: "" }],
         isArray: true
     })
-    @ManyToMany(() => TagEntity, { cascade: true })
+    @ManyToMany(
+        type => TagEntity, 
+        tag => tag.uuid,
+        { cascade: true },
+    )
     @JoinTable()
     tags: TagEntity[];
 

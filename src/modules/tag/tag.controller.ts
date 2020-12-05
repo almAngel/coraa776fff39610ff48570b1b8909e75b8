@@ -10,47 +10,47 @@ import { BasicGuard } from '../auth/basic.guard';
 @Controller("/tag")
 export class TagController {
 
-    constructor(
-        private readonly tagService: TagService,
-    ) { }
+  constructor(
+    private readonly tagService: TagService,
+  ) { }
 
-    @Get("/")
-    @UseGuards(BasicGuard)
-    @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
-    @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
-    @ApiResponse({ status: 500, description: 'Internal server error' })
-    getAll() {
-  
-      return this.tagService.getAll() ;
-    }
+  @Get("/")
+  @UseGuards(BasicGuard)
+  @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
+  @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  getAll() {
 
-    @Get("/:id")
-    @UseGuards(BasicGuard)
-    @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
-    @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
-    @ApiResponse({ status: 500, description: 'Internal server error' })
-    get(@Param("id") id: string) {
-  
-      return this.tagService.getById(id) ;
-    }
+    return this.tagService.getAll();
+  }
 
-    @Post("/")
-    @UseGuards(BasicGuard)
-    @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
-    @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
-    @ApiResponse({ status: 500, description: 'Internal server error' })
-    add(@Body() tag: TagEntity) {
-  
-      return this.tagService.save(tag);
-    }
+  @Get("/:id")
+  @UseGuards(BasicGuard)
+  @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
+  @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  get(@Param("id") id: string) {
 
-    @Delete("/:id")
-    @UseGuards(BasicGuard)
-    @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
-    @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
-    @ApiResponse({ status: 500, description: 'Internal server error' })
-    delete(@Param("id") id: string) {
-  
-      return this.tagService.delete(id);
-    }
+    return this.tagService.getById(id);
+  }
+
+  @Post("/")
+  @UseGuards(BasicGuard)
+  @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
+  @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  add(@Body() tag: TagEntity) {
+
+    return this.tagService.save(tag);
+  }
+
+  @Delete("/:id")
+  @UseGuards(BasicGuard)
+  @ApiResponse({ status: 201, description: `The ${TagController.prototype.constructor.name.split("Controller").shift()} has been successfully created` })
+  @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  delete(@Param("id") id: string) {
+
+    return this.tagService.delete(id);
+  }
 }

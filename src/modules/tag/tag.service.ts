@@ -16,9 +16,11 @@ export class TagService {
 
 
     async save(tag: TagEntity) {
-        return handleResponse(
-            this.tagRepository.save(tag)
+        let response = await handleResponse(
+            this.tagRepository.insert(tag)
         );
+
+        return response;
     }
 
     async getAll() {

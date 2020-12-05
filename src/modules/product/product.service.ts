@@ -1,11 +1,13 @@
+import { TagUUID } from './../tag/taguuid.dto';
 import { TagService } from './../tag/tag.service';
 import { TagEntity } from './../tag/tag.entity';
 import { ProductEntity } from './product.entity';
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { Product } from './product.dto';
 import { handleResponse } from 'src/utils/response.handler';
+import { Tag } from '../tag/tag.dto';
 
 @Injectable()
 export class ProductService {
@@ -30,14 +32,41 @@ export class ProductService {
 
     async load(id: string) {
         return await handleResponse(
-            this.productRepository.findOne(id, {relations: ["tags"]})
+            this.productRepository.findOne(id, { relations: ["tags"] })
         );
     }
 
+
     async loadAll() {
-        return await handleResponse(
-            this.productRepository.find({relations: ["tags"]})
-        );
+
+        let res = await this.productRepository.find({ relations: ["tags"] });
+
+        return res;
+    }
+
+    async loadByTags(tags) {
+        let res: ProductEntity[] = [];
+        let finalRes: ProductEntity[] = [];
+
+        if (tags.length > 0) {
+            for (let t of tags) {
+                res = await this.productRepository
+                    .createQueryBuilder("product")
+                    .leftJoinAndSelect("product.tags", "tag")
+                    .where("tag.uuid = :uuid", { uuid: t.uuid })
+                    .getMany();
+
+                finalRes = finalRes.concat(res);
+
+            }
+
+            // DEDUPE
+            finalRes = [...new Map(res.map(item => [item.uuid, item])).values()];
+        } else {
+            finalRes = await this.productRepository.find({ relations: ["tags"] })
+        }
+
+        return finalRes;
     }
 
     async addTags(uuid, tags) {

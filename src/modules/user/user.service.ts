@@ -54,9 +54,6 @@ export class UserService {
             this.userRepository.findOne({ username: username })
         );
 
-        console.log(res);
-        
-
         if (res !== undefined) {
             if (res.username && res.password) {
                 const isEqual = await compare(password, res.password);
