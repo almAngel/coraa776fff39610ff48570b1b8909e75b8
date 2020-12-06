@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDefined, IsNotEmpty, Matches } from "class-validator";
+import { IsDefined, IsNotEmpty, Matches, Min } from "class-validator";
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Tag } from "../tag/tag.dto";
 import { TagEntity } from "../tag/tag.entity";
@@ -41,6 +41,17 @@ export class ProductEntity {
     })
     @Column({ unique: true })
     slug: string;
+
+    @Min(0)
+    @IsNotEmpty()
+    @IsDefined()
+    @ApiProperty({
+        example: 0,
+        minLength: 1,
+        required: true
+    })
+    @Column({default: 0})
+    quantity: number;
 
     @IsNotEmpty()
     @IsDefined()

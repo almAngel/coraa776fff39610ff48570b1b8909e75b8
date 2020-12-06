@@ -17,7 +17,7 @@ export class ProductController {
     private readonly productService: ProductService,
   ) { }
 
-  @Get("/")
+  @Get("/all")
   @UseGuards(BasicGuard)
   @ApiResponse({ status: 200, description: `The ${ProductController.prototype.constructor.name.split("Controller").shift()} has been successfully retrieved` })
   @ApiResponse({ status: 400, description: 'Bad Request: Usually a validation error' })

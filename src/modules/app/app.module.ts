@@ -1,3 +1,7 @@
+
+import { UserService } from './../user/user.service';
+import { AuthService } from './../auth/auth.service';
+import { StateLogEntity } from './../statelog/statelog.entity';
 import { AuthModule } from './../auth/auth.module';
 import { TagModule } from './../tag/tag.module';
 import { TagEntity } from './../tag/tag.entity';
@@ -13,9 +17,13 @@ import { Connection } from 'typeorm';
 import { UserModule } from '../user/user.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { StateLogController } from '../statelog/statelog.controller';
+import { BasicGuard } from '../auth/basic.guard';
+import { StateLogService } from '../statelog/statelog.service';
 
 @Module({
   imports: [
+    TypeOrmModule.forFeature([UserEntity, StateLogEntity]),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '..', '..', 'client'),
       renderPath: "/"
@@ -40,16 +48,17 @@ import { join } from 'path';
       username: 'bd58e419ab06d3',
       password: '02a73297',
       database: 'heroku_4a851f6b83abc92',
-      entities: [UserEntity, ProductEntity, TagEntity],
+      entities: [UserEntity, ProductEntity, TagEntity, StateLogEntity],
       synchronize: true,
+      dropSchema: false
     }),
     UserModule,
     ProductModule,
     TagModule,
     AuthModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, StateLogController],
+  providers: [AppService, BasicGuard, AuthService, UserService, StateLogService],
 })
 export class AppModule {
   constructor(private connection: Connection) { }
